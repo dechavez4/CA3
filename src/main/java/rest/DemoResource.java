@@ -52,6 +52,15 @@ public class DemoResource {
     }
 
     @GET
+    @Path("fill")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String fillDataBase() {
+        utils.SetupTestUsers add = new SetupTestUsers();
+        add.fill();
+        return "added to database";
+    }
+    
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("user")
     @RolesAllowed("user")
@@ -69,12 +78,4 @@ public class DemoResource {
         return "{\"msg\": \"Hello to (admin) User: " + thisuser + "\"}";
     }
 
-    @Path("fill")
-    @GET
-    @Produces({MediaType.APPLICATION_JSON})
-    public String fillDataBase() {
-        utils.SetupTestUsers add = new SetupTestUsers();
-        add.fill();
-        return "added to database";
-    }
 }
