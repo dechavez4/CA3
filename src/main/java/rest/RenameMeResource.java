@@ -6,11 +6,9 @@ import utils.EMF_Creator;
 import facades.FacadeExample;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import utils.SetupTestUsers;
 
 //Todo Remove or change relevant parts before ACTUAL use
 @Path("xxx")
@@ -39,12 +37,5 @@ public class RenameMeResource {
         return "{\"count\":" + count + "}";  //Done manually so no need for a DTO
     }
 
-    @Path("fill")
-    @POST
-    @Produces({MediaType.APPLICATION_JSON})
-    public String fillDataBase() {
-        utils.SetupTestUsers add = new SetupTestUsers();
-        add.fill();
-        return "added to database";
-    }
+ 
 }

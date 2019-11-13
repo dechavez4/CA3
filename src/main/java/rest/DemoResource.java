@@ -14,6 +14,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 import utils.EMF_Creator;
+import utils.SetupTestUsers;
 
 /**
  * @author lam@cphbusiness.dk
@@ -66,5 +67,14 @@ public class DemoResource {
     public String getFromAdmin() {
         String thisuser = securityContext.getUserPrincipal().getName();
         return "{\"msg\": \"Hello to (admin) User: " + thisuser + "\"}";
+    }
+
+    @Path("fill")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String fillDataBase() {
+        utils.SetupTestUsers add = new SetupTestUsers();
+        add.fill();
+        return "added to database";
     }
 }
