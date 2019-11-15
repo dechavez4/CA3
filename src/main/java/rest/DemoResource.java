@@ -52,13 +52,6 @@ public class DemoResource {
         }
     }
 
-    @GET
-    @Path("fill")
-    @Produces({MediaType.APPLICATION_JSON})
-    public String fillDataBase() {
-        add.fill();
-        return "added to database";
-    }
         
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -76,6 +69,14 @@ public class DemoResource {
     public String getFromAdmin() {
         String thisuser = securityContext.getUserPrincipal().getName();
         return "{\"msg\": \"Hello to (admin) User: " + thisuser + "\"}";
+    }
+    
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("fill")
+    public String fillDataBase() {
+        add.fill();
+        return "added to database";
     }
 
 }
