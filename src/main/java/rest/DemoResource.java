@@ -21,6 +21,7 @@ import utils.SetupTestUsers;
  */
 @Path("info")
 public class DemoResource {
+    private static SetupTestUsers add = new SetupTestUsers();
 
     private static EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV, EMF_Creator.Strategy.CREATE);
 
@@ -55,11 +56,10 @@ public class DemoResource {
     @Path("fill")
     @Produces({MediaType.APPLICATION_JSON})
     public String fillDataBase() {
-        utils.SetupTestUsers add = new SetupTestUsers();
         add.fill();
         return "added to database";
     }
-    
+        
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("user")
