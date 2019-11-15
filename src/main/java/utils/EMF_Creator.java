@@ -142,6 +142,7 @@ public class EMF_Creator {
         if (strategy != Strategy.NONE) {
             props.setProperty("javax.persistence.schema-generation.database.action", strategy.toString());
         }
+        
         return Persistence.createEntityManagerFactory(puName, props);
     }
 }
