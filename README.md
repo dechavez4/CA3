@@ -17,4 +17,33 @@ This project contains two major documentation files:
  - [How to use for future projects](README_how_to_use.md)
 
 
-readMe for backend
+### `My guide to setup the backend`
+1. Other Sources -> default package -> config.properties
+- change the dc.database name so it matches your database name. Do the same with dbtest. 
+
+2. Project Files -> pom.xml
+- the the remote.server to your URL. (<remote.server>https://renzcph.dk/manager/text</remote.server>)
+
+3. open the project folder and git bash in the root folder. 
+in the terminal: sudo nano /opt/tomcat/bin/setenv.sh
+
+export DEPLOYED="DEV_ON_DIGITAL_OCEAN"
+export USER="dev"
+export PW="ax2"
+export CONNECTION_STR="jdbc:mysql://localhost:3306/CA3" 
+
+4.afterwards restart tomcat. sudo systemctl restart tomcat
+
+5. find Travis.yml filen i root folderen. 
+ændre database navn i linie 40(CREATE DATABASE ??) til database navnet i den lokal database. (CA3_test)
+
+6. https://travis-ci.org/
+    på travis sæt REMOTE_USER til "script_user" og REMOTE_PW til script_user’s password.
+    
+    -- brug følgende kommando for at finde password til brugeren hvis nødvendigt.
+    sudo nano /opt/tomcat/conf/tomcat-users.xml
+
+7. når alle steps er kørt igennem SÅ HUSK AT CLEAN AND BUILD PROJEKTET. 
+
+
+
